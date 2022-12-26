@@ -1,0 +1,27 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           meson 1.0
+PortGroup           gitlab 1.0
+
+gitlab.setup        alpine apk-tools c21f61ddd8d742e4de2202aa623b0c06573f567b
+gitlab.instance     https://gitlab.alpinelinux.org
+revision            0
+
+name                apk-tools
+
+maintainers         {panekj @panekj} openmaintainer
+categories          sysutils
+description         Alpine Package Keeper
+long_description    ${description}, package manager for alpine
+platforms           darwin
+license             GPL-2.0-only
+homepage            https://gitlab.alpinelinux.org/alpine/${name}/
+
+depends_lib-append  port:lua \
+                    port:zlib \
+                    port:scdoc \
+                    port:openssl3
+
+gitlab.livecheck.branch master
+checksums               sha256 56c75ec58db210d20aa10fc26321aebd5e86d930450d0e8e759d6ed0b8d18c96
